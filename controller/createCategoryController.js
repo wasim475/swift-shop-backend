@@ -8,6 +8,10 @@ const createCategoryController = async(req,res)=>{
     }
    try {
     const {name}= req.body
+    const isExist = await Category.findOne({name:{$regex: new RegExp(name,"i")} })
+    if(isExist){
+        return res.send({warn:`${name} already exist!`})
+    }
     const category = await new Category({name})
     await category.save()
     if(category){

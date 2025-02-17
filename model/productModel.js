@@ -1,4 +1,4 @@
-const { number, boolean } = require('joi')
+const { number, boolean, required } = require('joi')
 const mongoose = require('mongoose')
 const {Schema}= mongoose
 
@@ -49,7 +49,8 @@ const ProductSchema = new Schema({
     }, 
     category:{
         type:  mongoose.Types.ObjectId,
-        ref: "category"
+        ref: "category",
+        required: true
     }
 }) 
 

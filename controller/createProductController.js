@@ -6,16 +6,16 @@ const createProductController = async (req,res)=>{
     if(error){
         return res.send({error: error.details[0].message})
     }
-
+ 
     try {
-    
-        const {name,description, price, imageLink, category, inStock}= req.body
-        const isExist = await Product.findOne({name})
-        console.log(isExist)
+        
+        const {name,description, price, imageLink, categoryId, inStock}= req.body
+        const isExist = await Product.findOne({name:{$regex: new RegExp(name,"i")} })
+        
         if(isExist){
             return res.send({warn:`${name} already exist.`})
         }
-        const product = await new Product({name,description, price, imageLink,inStock, category})
+        const product = await new Product({name,description, price, imageLink,inStock, "category":categoryId})
         await product.save() 
         if(!product){
             return res.send({error:"Something went wrong."})
