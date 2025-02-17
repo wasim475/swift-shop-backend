@@ -14,7 +14,7 @@ const Joi = require("joi")
         price: Joi.number().min(10).required(),
         inStock: Joi.number().min(1).required(),
         outOfStock: Joi.boolean(),
-        categoryId:Joi.string()  
+        category:Joi.string()  
     })
     return productSchema.validate(product)
 } 

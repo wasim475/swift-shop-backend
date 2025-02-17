@@ -46,8 +46,8 @@ const ProductSchema = new Schema({
     outOfStock:{
         type:Boolean,
         default: false  
-    },
-    categoryId:{
+    }, 
+    category:{
         type:  mongoose.Types.ObjectId,
         ref: "category"
     }
