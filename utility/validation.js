@@ -6,6 +6,18 @@ const Joi = require("joi")
     })
     return categorySchema.validate(category)
 } 
+ const productValidation = (product)=>{
+    const productSchema = Joi.object({
+        name: Joi.string().min(3).max(50).required(),
+        description: Joi.string().min(3).max(150).required(),
+        imageLink: Joi.string().min(3).required(),
+        price: Joi.number().min(10).required(),
+        inStock: Joi.number().min(1).required(),
+        outOfStock: Joi.boolean(),
+        categoryId:Joi.string()  
+    })
+    return productSchema.validate(product)
+} 
  
-module.exports = categoryValidation
+module.exports = {categoryValidation,productValidation}
 

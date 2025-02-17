@@ -1,5 +1,5 @@
 const Category = require('../model/categoryModel')
-const categoryValidation = require('../utility/validation')
+const { categoryValidation } = require('../utility/validation')
 
 const createCategoryController = async(req,res)=>{
     const {error}= categoryValidation(req.body)
