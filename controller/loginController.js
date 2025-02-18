@@ -15,7 +15,7 @@ const loginController = async (req,res)=>{
             console.error('Error comparing passwords:', err);
         } else if (result) {
             const resUser = await User.findOne({email}).select("name email role")
-            res.send(resUser)
+            res.send({user:resUser})
         } else {
             res.send({error:"Incorrect Credential!"})
         }
