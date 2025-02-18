@@ -18,7 +18,7 @@ const ProductSchema = new Schema({
             validator: (value)=> value && value.length>3 && value.length<250,
             message:"The product description must be at least 3 characters long."
         }  
-    },
+    },  
     imageLink:{
         type:String,
         required: true,

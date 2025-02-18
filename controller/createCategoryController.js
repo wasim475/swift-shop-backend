@@ -20,7 +20,7 @@ const createCategoryController = async(req,res)=>{
     
    } catch (error) {
     for(field in error.errors){
-        return error.errors[field].message
+        return error.errors[field]?.message
     }
    }
         

@@ -23,7 +23,7 @@ const createProductController = async (req,res)=>{
         res.send({success:"Product created successfully."})
     } catch (error) {
         for(field in error.errors){
-            return error.errors[field].message
+            return error.errors[field]?.message
         }
     }
 }

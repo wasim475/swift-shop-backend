@@ -23,10 +23,21 @@ const UserSchema = new Schema({
         type: String,
         required: true,
         validate:{
-            validator: (value)=> value && value.length=>6 && value.length<=20,
-            message:"User name must be at least 6 characters long."
+            validator: (value)=> value && value.length>5,
+            message:"Password must be at least 6 characters long."
         }
-        
+         
+    },
+    otp:{
+        type:String
+    },
+    isVerify:{
+        type: Boolean,
+       default:false 
+    },
+    role:{
+        type: String,
+       default:'customer' 
     },
 })
 
