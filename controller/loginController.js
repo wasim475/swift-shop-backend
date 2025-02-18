@@ -10,11 +10,12 @@ const loginController = async (req,res)=>{
 
     const{email, password}= user
 
-    bcrypt.compare(inputPassword, password, function(err, result) {
+    bcrypt.compare(inputPassword, password, async function(err, result) {
         if (err) {
             console.error('Error comparing passwords:', err);
         } else if (result) {
-            res.send(user)
+            const resUser = await User.findOne({email}).select("name email role")
+            res.send(resUser)
         } else {
             res.send({error:"Incorrect Credential!"})
         }
