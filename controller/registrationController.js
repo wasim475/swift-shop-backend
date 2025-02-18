@@ -7,8 +7,8 @@ const nodemailer = require("nodemailer");
 const registrationController = async (req, res) => {
   const { error } = userValidation(req.body);
   if (error) {
-    return res.send({ error: error });
-  }
+    return res.send({error: error.details[0]?.message});
+  } 
   try {
     const {name, email, password, phoneNumber}= req.body
     const existUser = await User.findOne({email})
