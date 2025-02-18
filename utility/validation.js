@@ -18,6 +18,16 @@ const Joi = require("joi")
     })
     return productSchema.validate(product)
 } 
+
+ const userValidation = (user)=>{
+    const userSchema = Joi.object({
+        name: Joi.string().min(3).max(50).required(),
+        email: Joi.string().required(),
+        phoneNumber: Joi.number().required(),
+        password: Joi.string().min(10).required(),  
+    })
+    return userSchema.validate(user)
+} 
  
-module.exports = {categoryValidation,productValidation}
+module.exports = {categoryValidation,productValidation, userValidation}
 
