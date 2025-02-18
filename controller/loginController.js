@@ -14,7 +14,7 @@ const loginController = async (req,res)=>{
         if (err) {
             console.error('Error comparing passwords:', err);
         } else if (result) {
-            res.send({success:"Login Successfull!"})
+            res.send(user)
         } else {
             res.send({error:"Incorrect Credential!"})
         }
