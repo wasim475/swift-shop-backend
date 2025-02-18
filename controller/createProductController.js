@@ -10,8 +10,8 @@ const createProductController = async (req,res)=>{
     try {
         
         const {name,description, price, imageLink, categoryId, inStock}= req.body
-        const isExist = await Product.findOne({name:{$regex: new RegExp(name,"i")} })
-        
+        const isExist = await Product.findOne({ name: { $eq: name.trim() } });
+          
         if(isExist){
             return res.send({warn:`${name} already exist.`})
         }
