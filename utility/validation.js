@@ -25,7 +25,7 @@ const Joi = require("joi")
         email: Joi.string().required(),
         phoneNumber: Joi.number().required(),
         password: Joi.string().min(10).required(),  
-    })
+    }) 
     return userSchema.validate(user)
 } 
  
