@@ -10,6 +10,7 @@ _.post("/create-category",createCategoryController)
 _.get("/get-category",getCategoryController)
 _.post("/create-product",createProductController)
 _.get("/get-product",getProductController)
+_.get("/get-product/:id",getProductByCategoryController)
 _.delete("/delete-product",deleteProductController)
 
 module.exports = _
