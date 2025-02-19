@@ -1,9 +1,8 @@
 const Product = require('../model/productModel')
 
 const getProductByCategoryController = async (req,res)=>{
-    const {id}= req.pararms
-    const specificCatProduct = await Product.find({"_id":id})
+    const specificCatProduct = await Product.find({"category":req.params.id}).populate("category")
     res.send(specificCatProduct)
-}
+}   
         
 module.exports = getProductByCategoryController
