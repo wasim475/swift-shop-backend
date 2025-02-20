@@ -7,6 +7,7 @@ const getProductController = require('../../controller/getProductController')
 const deleteProductController = require('../../controller/deleteProductController')
 const getProductByCategoryController = require('../../controller/getProductByCategoryController')
 const getProductBySliderController = require('../../controller/getProductBySliderController')
+const stripePaymentController = require('../../controller/stripePaymentController')
 
 _.post("/create-category",createCategoryController)
 _.get("/get-category",getCategoryController)
@@ -15,5 +16,6 @@ _.get("/get-product",getProductController)
 _.get("/get-product/:id",getProductByCategoryController)
 _.get("/get-sliderproduct",getProductBySliderController)
 _.delete("/delete-product",deleteProductController)  
+_.post("/stripe-payment",stripePaymentController)  
 
 module.exports = _
