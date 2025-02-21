@@ -38,7 +38,7 @@ const UserSchema = new Schema({
     role:{
         type: String,
        default:'customer' 
-    },
+    }, 
 })
 
 const User = mongoose.model("user",UserSchema)
