@@ -1,13 +1,13 @@
 const Product = require('../model/productModel')
 
 const deleteProductController = async (req,res)=>{
-    const {productId}= req.body
+    const {id}= req.params
+    const deleteProduct = await Product.findByIdAndDelete({"_id":id})
+    if(!deleteProduct){
+       return res.send({error:"Product deletion fail!"})
+    }
 
-     
-    const deleteProduct = await Product.findByIdAndDelete({"_id":productId})
-    if(deleteProduct){
-        res.send({success:"Product has been deleted."})
-    } 
+    return res.send({success:"Product deleted successfully!"})
 }
  
 module.exports = deleteProductController
