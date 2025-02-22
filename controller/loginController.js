@@ -1,5 +1,6 @@
 const bcrypt = require("bcrypt");
 const User = require('../model/userModel')
+var jwt = require('jsonwebtoken');
 
 const loginController = async (req,res)=>{
     const {inputEmail, inputPassword}= req.body
@@ -14,8 +15,9 @@ const loginController = async (req,res)=>{
         if (err) {
             console.error('Error comparing passwords:', err);
         } else if (result) {
+            const token =  jwt.sign({_id:user._id}, process.env.JWT_PRIVATE_KEY,{expiresIn:"1h"})
             const resUser = await User.findOne({email}).select("name email role")
-            res.send({user:resUser})
+            res.send({user:resUser, token })
         } else {
             res.send({error:"Incorrect Credential!"})
         }
